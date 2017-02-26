@@ -4,15 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")*@
-
+	<link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-        @RenderBody()
-
-    @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)*@
+	<div id="header">
+		<div class="title">SPORTS STORE</div>
+	</div>
+	<div id="categories">
+		We will put something useful here
+	</div>
+	<div id="content">
+		@RenderBody()
+	</div>
 </body>
 </html>
