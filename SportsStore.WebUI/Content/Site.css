@@ -1,26 +1,26 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	padding-top: 50px;
+	padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+	white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
 
 body {
@@ -28,8 +28,7 @@ body {
 	margin: 0;
 }
 
-div#header
-div.title,
+div#header div.title,
 div.item h3,
 div.item h4,
 div.pager a {
@@ -42,11 +41,10 @@ div#header {
 	color: white;
 }
 
-div#header
-div.title {
-	font-size: 2em;
-	padding: .6em;
-}
+	div#header div.title {
+		font-size: 2em;
+		padding: .6em;
+	}
 
 div#content {
 	border-left: 2px solid gray;
@@ -66,20 +64,20 @@ div.item {
 	margin-bottom: .7em;
 }
 
-div.item:first-child {
-	border-top: none;
-	padding-top: 0;
-}
+	div.item:first-child {
+		border-top: none;
+		padding-top: 0;
+	}
 
-div.item h3 {
-	font-size: 1.3em;
-	margin: 0 0 .25em 0;
-}
+	div.item h3 {
+		font-size: 1.3em;
+		margin: 0 0 .25em 0;
+	}
 
-div.item h4 {
-	font-size: 1.1em;
-	margin: .4em 0 0 0;
-}
+	div.item h4 {
+		font-size: 1.1em;
+		margin: .4em 0 0 0;
+	}
 
 div.pager {
 	text-align: right;
@@ -88,21 +86,21 @@ div.pager {
 	margin-top: 1em;
 }
 
-div.pager a {
-	font-size: 1.1em;
-	color: #666;
-	text-decoration: none;
-	padding: 0 .4em 0 .4em;
-}
+	div.pager a {
+		font-size: 1.1em;
+		color: #666;
+		text-decoration: none;
+		padding: 0 .4em 0 .4em;
+	}
 
-div.pager a:hover {
-	background-color: silver;
-}
+		div.pager a:hover {
+			background-color: silver;
+		}
 
-div.pager a.selected {
-	background-color: #353535;
-	color: white;
-}
+		div.pager a.selected {
+			background-color: #353535;
+			color: white;
+		}
 
 div#categories a {
 	font: bold 1.1em "Arial Narrow", "Franklin Gothic Medium", Arial;
@@ -113,18 +111,18 @@ div#categories a {
 	border-bottom: 1px solid silver;
 }
 
-div#categories a.selected {
-	background-color: #666;
-	color: white;
-}
+	div#categories a.selected {
+		background-color: #666;
+		color: white;
+	}
 
-div#categories a:hover {
-	background-color: #CCC;
-}
+	div#categories a:hover {
+		background-color: #CCC;
+	}
 
-div#categories a.selected:hover {
-	background-color: #666;
-}
+	div#categories a.selected:hover {
+		background-color: #666;
+	}
 
 form {
 	margin: 0;
@@ -151,13 +149,31 @@ tfoot td {
 	font-weight: bold;
 }
 
-.acionButtons a,
-input.acionButtons {
+.actionButtons A,
+input.actionButtons {
 	font: .8em Arial;
 	color: white;
 	margin: .5em;
 	text-decoration: none;
 	padding: .15em 1.5em .2em 1.5em;
 	background-color: #353535;
+	border: 1px solid black;
+}
+
+div#cart {
+	float: right;
+	margin: .8em;
+	color: silver;
+	background-color: #555;
+	padding: .5em .5em .5em 1em;
+}
+
+div#cart a {
+	text-decoration: none;
+	padding: .4em 1em .4em 1em;
+	line-height: 2.1em;
+	margin-left: .5em;
+	background-color: #333;
+	color: white;
 	border: 1px solid black;
 }
