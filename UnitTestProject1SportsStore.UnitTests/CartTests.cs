@@ -1,7 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
+using SportsStore.WebUI.Controllers;
+using SportsStore.WebUI.Models;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace UnitTestProject1SportsStore.UnitTests
 {
@@ -115,6 +119,71 @@ namespace UnitTestProject1SportsStore.UnitTests
 
 			// Утверждение
 			Assert.AreEqual(target.Lines.Count(), 0);
+		}
+
+		[TestMethod]
+		public void Can_Add_To_Cart()
+		{
+			// Организация - создание имитированного хранилища
+			Mock<IProductRepository> mock = new Mock<IProductRepository>();
+			mock.Setup(m => m.Products).Returns(new Product[]
+			{
+				new Product {ProductID = 1, Name = "P1", Category = "Apples"}
+			}.AsQueryable());
+
+			// Организация - создание экземпляра Cart
+			Cart cart = new Cart();
+
+			// Организация - создание контроллера
+			CartController target = new CartController(mock.Object);
+
+			// Действие - добавление товара в корзину
+			target.AddToCart(cart, 1, null);
+
+			// Утверждение
+			Assert.AreEqual(cart.Lines.Count(), 1);
+			Assert.AreEqual(cart.Lines.ToArray()[0].Product.ProductID, 1);
+		}
+
+		[TestMethod]
+		public void Adding_Product_To_Cart_Goes_To_Cart_Screen()
+		{
+			// Организация - создание имитированного хранилища
+			Mock<IProductRepository> mock = new Mock<IProductRepository>();
+			mock.Setup(m => m.Products).Returns(new Product[]
+			{
+				new Product {ProductID = 1, Name = "P1", Category = "Apples"}
+			}.AsQueryable());
+
+			// Организация - создание экземпляра Cart
+			Cart cart = new Cart();
+
+			// Организация - создание экземпляра контроллера
+			CartController target = new CartController(mock.Object);
+
+			// Действие - добавление товара в корзину
+			RedirectToRouteResult result = target.AddToCart(cart, 2, "myUrl");
+
+			// Утверждение
+			Assert.AreEqual(result.RouteValues["action"], "Index");
+			Assert.AreEqual(result.RouteValues["returnUrl"], "myUrl");
+		}
+
+		[TestMethod]
+		public void Can_View_Cart_Contents()
+		{
+			// Организация - создание экземпляра Cart
+			Cart cart = new Cart();
+
+			// Организация - создание контроллера
+			CartController target = new CartController(null);
+
+			// Действие - вызов метода действия Index
+			CartIndexViewModel result = (CartIndexViewModel)target.Index(cart, "myUrl").ViewData.Model;
+
+			// Утверждение
+			Assert.AreSame(result.Cart, cart);
+			Assert.AreEqual(result.ReturnUrl, "myUrl");
 		}
 	}
 }
