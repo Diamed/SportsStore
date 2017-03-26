@@ -98,7 +98,7 @@ namespace UnitTestProject1SportsStore.UnitTests
 			// Организация - создание товара
 			Product product = new Product { Name = "Test" };
 			// Действие - попытка сохранения товара
-			ActionResult result = target.Edit(product);
+			ActionResult result = target.Edit(product, null);
 			// Утверждение - проверка, что к хранилищу производится обращение
 			mock.Verify(m => m.SaveProduct(product));
 			// Утверждение - проверка типа результата метода
@@ -117,7 +117,7 @@ namespace UnitTestProject1SportsStore.UnitTests
 			// Организация - добавление ошибки в состояние модели
 			target.ModelState.AddModelError("error", "error");
 			// Действие - попытка сохранения товара
-			ActionResult result = target.Edit(product);
+			ActionResult result = target.Edit(product, null);
 			// Утверждение - проверка, что к хранилищу производится обращение
 			mock.Verify(m => m.SaveProduct(It.IsAny<Product>()), Times.Never());
 			// Утверждение - проверка типа результата метода
